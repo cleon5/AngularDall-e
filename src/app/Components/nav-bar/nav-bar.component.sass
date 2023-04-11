@@ -1,0 +1,76 @@
+
+nav
+    width: 90%
+    height: 50px
+    display: flex
+    justify-content: space-between
+    background-color: rgba(5, 6, 61, 0.856)
+    color: white
+    border-radius: 10px
+    margin: 10px auto
+    justify-self: center
+
+    .imgNav
+        background-color: rgba(255, 255, 255, 0.801)
+        border-radius: 10px
+        img
+            width: 3rem
+            justify-content: center
+            color: white
+    .enlacesNav
+        display: flex
+        margin-right: 4vw
+        
+        a
+            color: white
+            margin: auto 20px
+            &:hover
+                transition: all .5s
+                scale: 1.1
+
+@media (max-width: 495px) 
+    nav
+        width: 100%
+        margin: 0
+        border-radius: 10px 0 0 10px
+
+
+.dropdown 
+    color: white
+    margin: auto 20px
+
+.dropdown .dropbtn 
+  font-size: 16px
+  border: none
+  outline: none
+  color: white
+  padding: 14px 16px
+  background-color: inherit
+  font-family: inherit /* Important for vertical align on mobile phones */
+  margin: 0 /* Important for vertical align on mobile phones */
+
+.navbar a:hover, .dropdown:hover .dropbtn 
+  background-color: #2a238a
+
+
+.dropdown-content 
+  display: none
+  position: absolute
+  background-color: #4a289b
+  min-width: 160px
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2)
+  z-index: 1
+
+.dropdown-content a 
+  float: none
+  color: black
+  padding: 12px 16px
+  text-decoration: none
+  display: block
+  text-align: left
+
+.dropdown-content a:hover 
+  background-color: #4f7fd8
+
+.dropdown:hover .dropdown-content 
+  display: block

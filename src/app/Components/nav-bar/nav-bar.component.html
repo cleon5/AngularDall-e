@@ -1,0 +1,21 @@
+<nav>
+    <div class="imgNav">
+        <img src="../../../assets/ChatGPT.svg" alt="">
+    </div>
+    <div class="enlacesNav">
+        <a [routerLink]="['/']">Home</a>
+        <a [routerLink]="['/']">About</a>
+        <a [routerLink]="['/crear']">Crear</a>
+        <a [routerLink]="['/perfil']">Perfil</a>
+        <div class="dropdown">
+            <button class="dropbtn">Dropdown
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a [routerLink]="['/perfil']">Resgistrarse</a>
+              <a [routerLink]="['/perfil']">Iniciar</a>
+              <a [routerLink]="['/']" (click)="signOut()">Sign Out</a>
+            </div>
+          </div>
+    </div>
+</nav>

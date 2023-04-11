@@ -1,0 +1,62 @@
+<div class="registro">
+    <div *ngIf="!isOpen" class="card">
+        <div (click)="open()" class="">
+            <i class="fa-solid fa-right-to-bracket fa-xl"></i>
+        </div>
+        <h2>Registrarse</h2>
+        <div class="secForm">
+            <label for="name">Nombre:</label>
+            <input id="name" type="text" class="" placeholder="Nombre"  [(ngModel)]="nombre"><br>
+        </div>
+
+        <div class="secForm">
+            <label for="mail">Correo</label>
+            <input id="mail" type="text" placeholder="Correo@gmail.com" [(ngModel)]="correo"><br>
+        </div>
+        <div class="secForm">
+            <label for="pass1">Password</label>
+            <input id="pass1" type="text" placeholder="*********" [(ngModel)]="password"><br>
+        </div>
+
+        <div class="secForm">
+            <label for="pass2">Confirmar</label>
+            <input id="pass2" type="text" placeholder="*********"><br>
+        </div>
+
+        <div class="botones">
+            <button  (click)="registrar()" class="btnNormal">Registrate</button>
+            <button class="btnGoogle" (click)="Google()" >
+                <i class="fa-brands fa-google" style="color: #f5f5f5;"></i>
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="isOpen">
+        <div class="card">
+            <div class="">
+                <i (click)="open()" class="fa-solid fa-right-to-bracket fa-xl"></i>
+            </div>
+            <h2>Login</h2>
+
+            <div class="secForm">
+                <label for="mail">Correo</label>
+                <input id="mail" type="text" placeholder="Correo@gmail.com" [(ngModel)]="correo"><br>
+            </div>
+            <div class="secForm">
+                <label for="pass1">Password</label>
+                <input id="pass1" type="text" placeholder="*********" [(ngModel)]="password"><br>
+            </div>
+
+
+            <div class="botones">
+                <button class="btnGoogle">
+                    <i class="fa-brands fa-google" style="color: #f5f5f5;"></i>
+                </button>
+                <button class="btnGoogle" (click)="login()">
+                    <i class="fa-solid fa-right-to-bracket" style="color: #f5f5f5;">inicia session</i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

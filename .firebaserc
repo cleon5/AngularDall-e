@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "dall-e-2f682": {
+      "hosting": {
+        "dalle": [
+          "dall-e-2f682"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "dall-e-2f682"
+  }
+}
