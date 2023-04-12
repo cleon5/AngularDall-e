@@ -20,11 +20,7 @@ export class PerfilComponent {
     private router: Router
   ) {}
   ngOnInit() {
-    this.RestService.get(
-      'https://free-to-play-games-database.p.rapidapi.com/api/game?id=' + 1
-    ).subscribe((resp) => {
-      console.log(resp);
-    });
+   
   }
   registrar() {
     this.authService

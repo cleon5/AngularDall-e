@@ -1,3 +1,24 @@
-<div>
-    co
+<div class="Crear">
+    <div class="sidebard">
+        
+            <label for="">Medidas
+                <input type="text" placeholder="720px*1080"  [(ngModel)]="medidas">
+            </label><br>
+            <label for="">X-RapidAPI-Key
+                <input type="text" placeholder="...."  [(ngModel)]="RapidAPI">
+            </label><br>
+            <label for="">Promp
+                <br>
+                <textarea placeholder="..." [(ngModel)]="promp"></textarea>
+            </label>
+            <button class="btnGenerar" (click)="Generar()">Generar</button>
+
+    
+    </div>
+    <div class="imgGenerada">
+        <div class="imgDiv">
+           <img [src]="response.data[0].url" alt="" class="imgGenerada"> 
+        </div>
+        
+    </div>
 </div>
