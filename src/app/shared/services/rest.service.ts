@@ -8,10 +8,10 @@ export class RestService {
 
   constructor(private http: HttpClient) {}
 
-  public get(url: string, datos:any) {
+  public get(url: string, datos:any, apikey:string, apiHost:string) {
     const headers = new HttpHeaders({
-      'X-RapidAPI-Key': 'cb467d16f3msh3f8fb60e3b94a3dp12b1b8jsn48209caee58e',
-      'X-RapidAPI-Host': 'openai80.p.rapidapi.com'
+      'X-RapidAPI-Key': apikey,
+      'X-RapidAPI-Host': apiHost
 
     });
     

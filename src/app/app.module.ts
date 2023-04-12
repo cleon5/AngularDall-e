@@ -19,6 +19,7 @@ import { AuthService } from './shared/services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { CrearComponent } from './View/crear/crear.component';
 import { CardPrompsComponent } from './Components/card-promps/card-promps.component';
+import { TutorialComponent } from './View/tutorial/tutorial.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { CardPrompsComponent } from './Components/card-promps/card-promps.compon
     NavBarComponent,
     PerfilComponent,
     CrearComponent,
-    CardPrompsComponent
+    CardPrompsComponent,
+    TutorialComponent
   ],
   imports: [
     BrowserModule,
