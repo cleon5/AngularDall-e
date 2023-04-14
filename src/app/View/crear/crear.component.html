@@ -1,19 +1,22 @@
-<div class="Crear">
+<div class="viewCrear">
+    <app-nav-bar></app-nav-bar>
+    <div class="Crear">
     <div class="sidebard">
-        
-            <label for="">Medidas
+
+        <h2>Imagen</h2>
+            <label for="">Medidas</label>
                 <input type="text" placeholder="720px*1080"  [(ngModel)]="medidas">
-            </label><br>
-            <label for="">X-RapidAPI-Key
+            <br>
+            <label for="">X-RapidAPI-Key</label>
                 <input type="text" placeholder="...."  [(ngModel)]="RapidAPI">
-            </label><br>
-            <label for="">X-ApiHost
+            <br>
+            <label for="">X-ApiHost</label>
                 <input type="text" placeholder="...."  [(ngModel)]="apiHost">
-            </label><br>
-            <label for="">Promp
+            <br>
+            <label for="">Promp</label>
                 <br>
                 <textarea placeholder="..." [(ngModel)]="promp"></textarea>
-            </label><br>
+            <br>
             <button class="btnGenerar" (click)="Generar()">Generar</button>
 
     
@@ -24,4 +27,5 @@
         </div>
         
     </div>
+</div>
 </div>

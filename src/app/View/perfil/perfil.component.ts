@@ -55,6 +55,6 @@ export class PerfilComponent {
     this.correo = '';
     this.password = '';
     this.isOpen = !this.isOpen;
-    this.authService.actualizar('ejemplo api');
+    //sthis.authService.actualizar('ejemplo api');
   }
 }

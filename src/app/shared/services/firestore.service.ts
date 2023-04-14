@@ -1,0 +1,44 @@
+import { Injectable, NgZone, inject } from '@angular/core';
+import {
+  Auth,
+  signOut,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  authState
+} from '@angular/fire/auth';
+import { Firestore, collectionData, collection, addDoc, updateDoc} from '@angular/fire/firestore';
+import { doc, setDoc} from "firebase/firestore";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FirestoreService {
+  userData: any;
+  firestore: Firestore = inject(Firestore);
+  constructor(private auth: Auth, firestore: Firestore,) {
+    
+  }
+  setUserData(user: any) {
+    console.log(user)
+    this.userData = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      emailVerified: user.emailVerified,
+      apyKey:'apikey'
+    };
+    return setDoc(doc(this.firestore, "Users", user.uid), this.userData)
+   
+  }
+  actualizar(apikey:any){
+    console.log(this.userData)
+    updateDoc(doc(this.firestore, "Users", this.userData.uid), {
+      apyKey2: apikey
+    })
+  }
+}
+
