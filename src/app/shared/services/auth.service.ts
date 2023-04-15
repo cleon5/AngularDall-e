@@ -6,7 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup,
+  signInWithPopup,signInWithRedirect ,
   authState,
 } from '@angular/fire/auth';
 import {
@@ -61,6 +61,15 @@ export class AuthService {
     try {
       const res = await signInWithPopup(this.auth, new GoogleAuthProvider());
       this.firestoreService.setUserData(res.user);
+      console.log(res);
+    } catch (err) {
+      return console.log(err);
+    }
+  }
+  async GoogleLogin2() {
+    try {
+      const res = await signInWithRedirect(this.auth, new GoogleAuthProvider());
+      this.firestoreService.setUserData(res);
       console.log(res);
     } catch (err) {
       return console.log(err);

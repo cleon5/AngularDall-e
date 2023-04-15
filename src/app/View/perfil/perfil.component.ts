@@ -43,8 +43,17 @@ export class PerfilComponent {
     this.authService
       .GoogleLogin()
       .then((Response) => {
-        //this.authService.setUserData(Response)
-        console.log(Response);
+        this.router.navigate(['/']);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  Google2(){
+    this.authService
+      .GoogleLogin2()
+      .then((Response) => {
+        this.router.navigate(['/']);
       })
       .catch((err) => {
         console.log(err);

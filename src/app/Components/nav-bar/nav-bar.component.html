@@ -11,9 +11,9 @@
               <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-              <a [routerLink]="['/perfil']">Resgistrarse</a>
-              <a [routerLink]="['/perfil']">Iniciar</a>
-              <a [routerLink]="['/']" (click)="signOut()">Sign Out</a>
+              <a *ngIf="!logueado" [routerLink]="['/perfil']">Resgistrarse</a>
+              <a *ngIf="!logueado" [routerLink]="['/perfil']">Iniciar</a>
+              <a *ngIf="logueado!=null" [routerLink]="['/']" (click)="signOut()">Sign Out</a>
             </div>
           </div>
     </div>

@@ -35,10 +35,9 @@ export class FirestoreService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
-      apyKey: 'apikey',
+      emailVerified: user.emailVerified
     };
-    return setDoc(doc(this.firestore, 'Users', user.uid), this.userData);
+    return setDoc(doc(this.firestore, 'Users', user.uid), this.userData, { merge: true })
   }
   actualizar(apikey: any) {
     console.log(this.userData);
@@ -48,7 +47,6 @@ export class FirestoreService {
   }
   async getUser() {
     let docSnap = await getDoc(doc(this.firestore, 'Users', this.userData.uid));
-    console.log(docSnap.data())
     return (docSnap.data())
   }
 }
