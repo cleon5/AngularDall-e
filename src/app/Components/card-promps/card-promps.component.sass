@@ -1,20 +1,62 @@
 .cardPromt
-    width: 100%
+    position: relative
+    height: auto
+    width: 24vw
     h3
-        font-size: 2.5vw
+        font-size: 1.8vw
+        text-align: center
     .bodyPromt
-        width: 80%
-        margin: 5px 10%
-        padding: 1vw
+        width: 22vw
+        position: absolute
+        top:15vw
+        margin: 1vw
+        z-index: 10
         border-radius: 10px
         background-color: #838282
         p
-            font-size: 2vw
+            font-size: 1.5vw
             background-color: #d1d1d1
     .imgPromt
-        width: 90%
-        margin: 0 auto
-        border-radius: 10px
+        width: 100%
+        position: relative
+        //height: 0vw
+        aspect-ratio: 3/4
         img
+            object-fit: cover
+            position: absolute
+            height: 100%
             width: 100%
+            border-radius: 0px
+
+@media screen and (max-width: 880px) 
+    .cardPromt
+        width: 48vw
+        h3
+            font-size: 2.5vw
+            text-align: center
+        .bodyPromt
+            width: 42vw
+            position: absolute
+            top:40vw
+            margin: 3vw
+            z-index: 10
             border-radius: 10px
+            background-color: #838282
+            p
+                font-size: 2vw
+                background-color: #d1d1d1
+        .imgPromt
+            width: 100%
+            position: relative
+            //height: 0vw
+            aspect-ratio: 3/4
+            img
+                object-fit: cover
+                position: absolute
+                height: 100%
+                width: 100%
+                border-radius: 0px
+
+@media screen and (max-width: 450px) 
+    .cardPromt
+        width: 46vw

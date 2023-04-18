@@ -76,7 +76,10 @@ export class AuthService {
     }
   }
   SignOut() {
-    return signOut(this.auth);
+    return signOut(this.auth).then(res => {
+      localStorage.setItem('user', 'null');
+      JSON.parse(localStorage.getItem('user')!);
+    });
   }
 
   /*actualizar(apikey:any){
