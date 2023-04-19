@@ -77,8 +77,8 @@ export class AuthService {
   }
   SignOut() {
     return signOut(this.auth).then(res => {
-      localStorage.setItem('user', 'null');
-      JSON.parse(localStorage.getItem('user')!);
+      //localStorage.setItem('user', 'null');
+      //JSON.parse(localStorage.getItem('user')!);
     });
   }
 
