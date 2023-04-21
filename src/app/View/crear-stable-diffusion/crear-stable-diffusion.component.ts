@@ -16,7 +16,7 @@ export class CrearStableDiffusionComponent {
   promp: string = '';
   negativePromp: string = '';
   medidas: string = '1024x1024';
-  RapidAPI: string = '';
+  Token: string = '';
   apiHost: string = 'openai80.p.rapidapi.com';
   img:any;
   responseSableDifusion: any = {
@@ -55,20 +55,14 @@ export class CrearStableDiffusionComponent {
     private RestService: StabledifusionService,
     private apoi:ApiRestService,
     private firestoreService: FirestoreService,
-  ) {
-
-    
+  ) {    
   }
-  ngOnInit(){
 
-    
-  }
- 
  
   async getdata() {
     this.user = await this.firestoreService.getUser();
     console.log(this.user);
-    this.RapidAPI = this.user.apyKey;
+    //this.RapidAPI = this.user.apyKey;
   }
 
   Generar() {
@@ -92,7 +86,7 @@ export class CrearStableDiffusionComponent {
       console.log(resp)
       setTimeout(() => {
         console.log("1 Segundo esperado")
-        this.RestService.getUrl(resp).subscribe(res =>{
+        this.RestService.getUrl(resp, this.Token).subscribe(res =>{
         console.log(res)
         this.responseSableDifusion = res;
       })
@@ -118,7 +112,7 @@ export class CrearStableDiffusionComponent {
       'https://replicate.com/api/models/stability-ai/stable-diffusion/versions/db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf/predictions',
       prompt
     ).subscribe((resp) => {
-      this.firestoreService.actualizar(this.RapidAPI);
+      //this.firestoreService.actualizar(this.RapidAPI);
       this.response = resp;
     });
   }

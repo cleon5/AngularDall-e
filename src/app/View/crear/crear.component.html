@@ -1,31 +1,74 @@
 <div class="viewCrear">
     <app-nav-bar></app-nav-bar>
-    <div class="Crear">
-    <div class="sidebard">
+    <div  *ngIf="!swicht" class="Crear">
+        
+        <div class="sidebard">
 
-        <h2>Imagen</h2>
+            <div class="title">
+              <h2>Dall-e</h2>  
+              <button class="btnChange" (click)="changeSwicht()">Stable Diffusion</button>
+            </div>
+            
             <label for="">Medidas</label>
-                <input type="text" placeholder="720px*1080"  [(ngModel)]="medidas">
+            <input type="text" placeholder="720px*1080" [(ngModel)]="medidas">
             <br>
             <label for="">X-RapidAPI-Key</label>
-                <input type="text" placeholder="...."  [(ngModel)]="RapidAPI">
+            <input type="text" placeholder="...." [(ngModel)]="RapidAPI">
             <br>
             <label for="">X-ApiHost</label>
-                <input type="text" placeholder="...."  [(ngModel)]="apiHost">
+            <input type="text" placeholder="...." [(ngModel)]="apiHost">
             <br>
             <label for="">Prompt</label>
-                <br>
-                <textarea placeholder="..." [(ngModel)]="promp"></textarea>
+            <br>
+            <textarea placeholder="..." [(ngModel)]="promp"></textarea>
             <br>
             <button class="btnGenerar" (click)="Generar()">Generar</button>
 
-    
-    </div>
-    <div class="imgGenerada">
-        <div class="imgDiv">
-           <img [src]="response.data[0].url" alt="" class="imgGenerada"> 
+
         </div>
-        
+        <div class="imgGenerada">
+            <div class="imgDiv">
+                <img [src]="response.data[0].url" alt="" class="imgGenerada">
+            </div>
+
+        </div>
     </div>
-</div>
+
+    <div  *ngIf="swicht" class="Crear">
+        <div>
+            <button  (click)="changeSwicht()">change</button>
+        </div>
+        <div class="sidebard">
+
+            <div class="title">
+                <h2>Stable Diffusion</h2>  
+                <button class="btnChange" (click)="changeSwicht()">Dall-e</button>
+            </div>
+
+            <label for="">Medidas</label>
+            <input type="text" placeholder="720px*1080" [(ngModel)]="medidas">
+            <br>
+            <label for="">Token</label>
+            <input type="text" placeholder="..." [(ngModel)]="Token">
+            <br>
+
+            <label for="">Prompt</label>
+            <br>
+            <textarea placeholder="..." [(ngModel)]="promp"></textarea>
+            <br>
+            <label for="">Negative Prompt</label>
+            <br>
+            <textarea placeholder="..." [(ngModel)]="negativePromp"></textarea>
+            <br>
+            <button class="btnGenerar" (click)="GenerarStableDifussion()">Generar</button>
+
+
+        </div>
+        <div class="imgGenerada">
+            <div class="imgDiv">
+                <img [src]="responseSableDifusion.output[0]" alt="" class="imgGenerada">
+            </div>
+
+        </div>
+    </div>
 </div>
