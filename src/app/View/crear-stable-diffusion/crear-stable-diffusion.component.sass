@@ -1,0 +1,102 @@
+.viewCrear
+    background-color:#222222
+    min-height: 100vh
+.Crear
+    display: flex
+    width: 100%
+    margin: 0 auto
+    justify-content: center
+    padding-top: 10px
+    background-color:#222222
+
+    .sidebard
+        width: 20vw
+        h2
+            text-align: center
+            color: white
+            font-size: 2.5vw
+        label
+            color: white
+            font-size: 2vw
+            font-family: inherit
+        input
+            width: 90%
+            margin-bottom: 20px
+            font-family: inherit
+            width: 100%
+            border: 0
+            border-bottom: 2px solid gray
+            outline: 0
+            font-size: 1.3rem
+            color: white
+            padding: 7px 0
+            background: transparent
+            transition: border-color 0.2s
+        textarea
+            width: 90%
+            margin-bottom: 10px
+            font-family: inherit
+            width: 100%
+            border: 0
+            border-bottom: 2px solid gray
+            outline: 0
+            font-size: 1.3rem
+            color: white
+            padding: 7px 0
+            background: transparent
+            transition: border-color 0.2s
+        button
+            width: 90%
+            margin: 0 5%
+            background-color: #13aa52
+            border: 1px solid #13aa52
+            border-radius: 4px
+            box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0
+            box-sizing: border-box
+            color: #fff
+            cursor: pointer
+            font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif
+            font-size: 16px
+            font-weight: 400
+            outline: none
+            outline: 0
+            padding: 10px 25px
+            text-align: center
+            transform: translateY(0)
+            transition: transform 150ms, box-shadow 150ms
+            touch-action: manipulation
+        button:hover
+            box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0
+            transform: translateY(-2px)
+
+    
+    .imgGenerada
+        width: 75vw
+        .imgDiv
+            width:90% 
+            padding: 5%
+            img
+                width: 100%
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px
+
+@media (max-width: 805px) 
+    .Crear
+        flex-direction: column-reverse
+        padding-bottom: 50px
+        .sidebard
+            margin: 0 auto
+            width: 80%
+            h2
+                font-size: 4vw
+            label
+                font-size: 3.3vw
+            input
+                font-size: 3.3vw
+        .imgGenerada
+            width: 90%
+            margin: 0 auto
+            .imgDiv
+                width:90% 
+                padding: 5%
+                img
+                    width: 100%

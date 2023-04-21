@@ -63,12 +63,18 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "dalle:build:production",
+            "proxyConfig": "src/proxy.conf.json"
+            },
           "configurations": {
             "production": {
-              "browserTarget": "dalle:build:production"
+              "browserTarget": "dalle:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
-              "browserTarget": "dalle:build:development"
+              "browserTarget": "dalle:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

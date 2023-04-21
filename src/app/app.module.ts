@@ -20,6 +20,10 @@ import { FormsModule } from '@angular/forms';
 import { CrearComponent } from './View/crear/crear.component';
 import { CardPrompsComponent } from './Components/card-promps/card-promps.component';
 import { TutorialComponent } from './View/tutorial/tutorial.component';
+import { CrearStableDiffusionComponent } from './View/crear-stable-diffusion/crear-stable-diffusion.component';
+
+import { ReplicateService } from './shared/services/replicate.service';
+import Replicate from 'replicate';
 
 
 @NgModule({
@@ -30,7 +34,8 @@ import { TutorialComponent } from './View/tutorial/tutorial.component';
     PerfilComponent,
     CrearComponent,
     CardPrompsComponent,
-    TutorialComponent
+    TutorialComponent,
+    CrearStableDiffusionComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,7 @@ import { TutorialComponent } from './View/tutorial/tutorial.component';
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
   ],
-  providers: [AuthService,
+  providers: [AuthService, ReplicateService,
     ScreenTrackingService,UserTrackingService
   ],
   bootstrap: [AppComponent]

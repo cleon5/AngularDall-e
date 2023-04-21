@@ -6,7 +6,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup,signInWithRedirect ,
+  signInWithPopup,
+  signInWithRedirect,
   authState,
 } from '@angular/fire/auth';
 import {
@@ -46,7 +47,7 @@ export class AuthService {
       }
     });
   }
-  
+
   register(email: any, password: any) {
     return createUserWithEmailAndPassword(this.auth, email, password);
   }
@@ -76,7 +77,7 @@ export class AuthService {
     }
   }
   SignOut() {
-    return signOut(this.auth).then(res => {
+    return signOut(this.auth).then((res) => {
       //localStorage.setItem('user', 'null');
       //JSON.parse(localStorage.getItem('user')!);
     });

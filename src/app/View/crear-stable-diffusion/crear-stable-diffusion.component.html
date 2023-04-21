@@ -1,0 +1,30 @@
+<div class="viewCrear">
+    <app-nav-bar></app-nav-bar>
+    <div class="Crear">
+    <div class="sidebard">
+
+        <h2>Imagen</h2>
+            <label for="">Medidas</label>
+                <input type="text" placeholder="720px*1080"  [(ngModel)]="medidas">
+            <br>
+           
+            <label for="">Prompt</label>
+                <br>
+                <textarea placeholder="..." [(ngModel)]="promp"></textarea>
+            <br>
+            <label for="">Negative Prompt</label>
+                <br>
+                <textarea placeholder="..." [(ngModel)]="negativePromp"></textarea>
+            <br>
+            <button class="btnGenerar" (click)="Generar()">Generar</button>
+
+    
+    </div>
+    <div class="imgGenerada">
+        <div class="imgDiv">
+           <img [src]="responseSableDifusion.output[0]" alt="" class="imgGenerada"> 
+        </div>
+        
+    </div>
+</div>
+</div>
