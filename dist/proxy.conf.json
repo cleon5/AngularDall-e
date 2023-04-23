@@ -1,0 +1,8 @@
+{
+    "/predictions/*": {
+    "target": "https://api.replicate.com/v1",
+    "secure": false,    
+    "changeOrigin":true,
+    "loglLevel":"debug"
+    }
+}
