@@ -2,6 +2,5 @@
   from = "/predictions"
   to = "https://api.replicate.com/v1"
   status = 200
-  status = 200
   force = true
   headers = {X-From = "Netlify"}
