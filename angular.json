@@ -69,12 +69,10 @@
             },
           "configurations": {
             "production": {
-              "browserTarget": "dalle:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "dalle:build:production"
             },
             "development": {
-              "browserTarget": "dalle:build:development",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "dalle:build:development"
             }
           },
           "defaultConfiguration": "development"

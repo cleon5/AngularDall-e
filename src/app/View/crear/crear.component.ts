@@ -74,7 +74,7 @@ export class CrearComponent {
       },
     };
 
-    this.StableDifussion.getStableDifusion('predictions', prompt).subscribe(
+    this.StableDifussion.getStableDifusion('/predictions/https://api.replicate.com/v1/predictions', prompt).subscribe(
       (resp) => {
         console.log(resp);
         setTimeout(() => {
