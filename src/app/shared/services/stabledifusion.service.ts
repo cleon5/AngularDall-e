@@ -23,7 +23,7 @@ export class StabledifusionService {
     });
     let output = url.urls.get;
     console.log(output.substring(29))
-    return this.http.get("/predictions/"+output, {headers:headers})
+    return this.http.get(output, {headers:headers})
   }
  
 }
