@@ -1,2 +1,6 @@
 [[redirects]]
-  /predictions/*  https://api.replicate.com/v1/:splat  200
+  from = "/predictions/*"
+  to = "https://api.replicate.com/v1/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
