@@ -59,6 +59,29 @@ export class CrearComponent {
   changeSwicht() {
     this.swicht = !this.swicht;
   }
+  ImagenStablediffusion(){
+    let p = {
+      key: this.Token,
+      prompt: this.promp,
+      negative_prompt: this.negativePromp,
+      width: "512",
+      height: "512",
+      samples: "1",
+      num_inference_steps: "20",
+      safety_checker: "no",
+      enhance_prompt: "yes",
+      seed: null,
+      guidance_scale: 7.5,
+      webhook: null,
+      track_id: null
+  }
+
+  this.StableDifussion.getImage("https://stablediffusionapi.com/api/v3/text2img",p).
+  subscribe(resp => {
+    console.log(resp)
+    this.responseSableDifusion = resp;
+  })
+  }
   GenerarStableDifussion() {
     let prompt = {
       version:
