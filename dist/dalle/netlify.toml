@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/predictions"
+  from = "/predictions/*"
   to = "https://api.replicate.com/v1/predictions/:splat"
   status = 200
   force = true
