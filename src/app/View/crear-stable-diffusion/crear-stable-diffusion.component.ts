@@ -81,7 +81,8 @@ export class CrearStableDiffusionComponent {
 
     this.RestService.getStableDifusion(
       'predictions',
-      prompt
+      prompt,
+      "a"
     ).subscribe((resp) => {
       console.log(resp)
       setTimeout(() => {
@@ -110,7 +111,7 @@ export class CrearStableDiffusionComponent {
 
     this.RestService.getStableDifusion(
       'https://replicate.com/api/models/stability-ai/stable-diffusion/versions/db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf/predictions',
-      prompt
+      prompt,"a"
     ).subscribe((resp) => {
       //this.firestoreService.actualizar(this.RapidAPI);
       this.response = resp;

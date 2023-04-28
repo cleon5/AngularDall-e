@@ -23,7 +23,7 @@ import { TutorialComponent } from './View/tutorial/tutorial.component';
 import { CrearStableDiffusionComponent } from './View/crear-stable-diffusion/crear-stable-diffusion.component';
 
 import { ReplicateService } from './shared/services/replicate.service';
-import Replicate from 'replicate';
+
 
 
 @NgModule({

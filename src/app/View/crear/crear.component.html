@@ -28,16 +28,13 @@
         </div>
         <div class="imgGenerada">
             <div class="imgDiv">
-                <img [src]="response.data[0].url" alt="" class="imgGenerada">
+                <img [src]="responseSableDifusion.output[0]" alt="" class="imgGenerada">
             </div>
 
         </div>
     </div>
 
     <div  *ngIf="swicht" class="Crear">
-        <div>
-            <button  (click)="changeSwicht()">change</button>
-        </div>
         <div class="sidebard">
 
             <div class="title">
@@ -45,13 +42,16 @@
                 <button class="btnChange" (click)="changeSwicht()">Dall-e</button>
             </div>
 
-            <label for="">Medidas</label>
-            <input type="text" placeholder="720px*1080" [(ngModel)]="medidas">
-            <br>
             <label for="">Token</label>
             <input type="text" placeholder="..." [(ngModel)]="Token">
             <br>
-
+            <label for="">Wight</label>
+            <input type="text" placeholder="512" [(ngModel)]="W">
+            <br>
+            <label for="">Height</label>
+            <input type="text" placeholder="512" [(ngModel)]="H">
+            <br>
+            
             <label for="">Prompt</label>
             <br>
             <textarea placeholder="..." [(ngModel)]="promp"></textarea>
@@ -60,6 +60,18 @@
             <br>
             <textarea placeholder="..." [(ngModel)]="negativePromp"></textarea>
             <br>
+
+            <label for="">Num_inference_steps</label>
+            <input type="text" placeholder="1-500" [(ngModel)]="Num_inference_steps">
+            <br>
+
+            <label for="">Guidance_scale</label>
+            <input type="text" placeholder="1-20" [(ngModel)]="Guidance_scale">
+            <br>
+            <label for="">Seed</label>
+            <input type="text" placeholder="#" [(ngModel)]="Seed">
+            <br>
+
             <button class="btnGenerar" (click)="GenerarStableDifussion()">Generar</button>
 
 
@@ -67,6 +79,7 @@
         <div class="imgGenerada">
             <div class="imgDiv">
                 <img [src]="responseSableDifusion.output[0]" alt="" class="imgGenerada">
+                <a href="IMAGE_URL"  [download]="responseSableDifusion.output[0]">des</a>
             </div>
 
         </div>

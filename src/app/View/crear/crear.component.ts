@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { RestService } from '../../shared/services/rest.service';
 import { FirestoreService } from '../../shared/services/firestore.service';
 import { StabledifusionService } from 'src/app/shared/services/stabledifusion.service';
+ 
 
 @Component({
   selector: 'app-crear',
-  templateUrl: './crear.component.html',
+  templateUrl: './crear.component.html', 
   styleUrls: ['./crear.component.sass'],
 })
 export class CrearComponent {
@@ -13,6 +14,15 @@ export class CrearComponent {
   swicht: boolean = false;
   negativePromp: string = '';
   Token: string = '';
+  Seed: any = null;
+  H: number = 512;
+  W: number = 512;
+  Guidance_scale: number = 7.5;
+  scheduler: string = 'K_EULER';
+  Num_inference_steps: number = 50;
+
+  
+  
   responseSableDifusion: any = {
     status: 'success',
     generationTime: 1.0769741535186768,
@@ -40,10 +50,12 @@ export class CrearComponent {
       vae: 'stabilityai/sd-vae-ft-mse',
     },
   };
+  
 
   medidas: string = '1024x1024';
   RapidAPI: string = '';
   apiHost: string = 'openai80.p.rapidapi.com';
+  responseSD: any;
   response: any = {
     created: 1681268637,
     data: [{ url: '../../assets/123.jpg' }],
@@ -59,28 +71,71 @@ export class CrearComponent {
   changeSwicht() {
     this.swicht = !this.swicht;
   }
-  ImagenStablediffusion(){
-    let p = {
+  /*
+  const download = e => {
+    console.log(e.target.href);
+    fetch(e.target.href, {
+      method: "GET",
+      headers: {}
+    })
+      .then(response => {
+        response.arrayBuffer().then(function(buffer) {
+          const url = window.URL.createObjectURL(new Blob([buffer]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", "image.png"); //or any other extension
+          document.body.appendChild(link);
+          link.click();
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  */
+  ImagenStablediffusion() {
+    let dataSD = {
       key: this.Token,
       prompt: this.promp,
       negative_prompt: this.negativePromp,
-      width: "512",
-      height: "512",
-      samples: "1",
-      num_inference_steps: "20",
-      safety_checker: "no",
-      enhance_prompt: "yes",
-      seed: null,
-      guidance_scale: 7.5,
+      width: this.W,
+      height: this.H,
+      samples: '1',
+      num_inference_steps: this.Num_inference_steps,
+      safety_checker: 'no',
+      enhance_prompt: 'yes',
+      seed: this.Seed,
+      guidance_scale: this.Guidance_scale,
       webhook: null,
-      track_id: null
-  }
+      track_id: null,
+    };
 
-  this.StableDifussion.getImage("https://stablediffusionapi.com/api/v3/text2img",p).
-  subscribe(resp => {
-    console.log(resp)
-    this.responseSableDifusion = resp;
-  })
+    this.StableDifussion.getImage(
+      'https://stablediffusionapi.com/api/v3/text2img',
+      dataSD
+    ).subscribe((resp) => {
+      this.responseSableDifusion = resp;
+    });
+  }
+  setResp(resp: any) {
+    this.responseSD = {
+      completed_at: resp.completed_at,
+      created_at: resp.created_at,
+      error: resp.error,
+      id: resp.id,
+      input: resp.input,
+      logs: resp.logs,
+      metrics: resp.metrics,
+      output: resp.output,
+      started_at: resp.started_at,
+      status: resp.status,
+      urls: resp.urls,
+      version: resp.version,
+      webhook_completed: resp.webhook_completed,
+    };
+  }
+  Comprobar(){
+    
   }
   GenerarStableDifussion() {
     let prompt = {
@@ -97,22 +152,26 @@ export class CrearComponent {
       },
     };
 
-    this.StableDifussion.getStableDifusion('predictions', prompt).subscribe(
-      (resp) => {
-        console.log(resp);
-        setTimeout(() => {
-          console.log('1 Segundo esperado');
+    this.StableDifussion.getStableDifusion(
+      'predictions',
+      prompt,
+      this.Token
+    ).subscribe((resp) => {
+      this.setResp(resp);
+      setTimeout(() => {
+        console.log('1 Segundo esperado');
+        if (this.responseSD.created_at !== null) {
           this.StableDifussion.getUrl(resp, this.Token).subscribe((res) => {
-            console.log(res);
             this.responseSableDifusion = res;
           });
-        }, 8000);
-      }
-    );
+        } else {
+          console.log(this.responseSD);
+        }
+      }, 1000);
+    });
   }
   async getdata() {
     this.user = await this.firestoreService.getUser();
-    console.log(this.user);
     this.RapidAPI = this.user.apyKey;
   }
 
