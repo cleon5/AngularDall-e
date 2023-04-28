@@ -10,6 +10,21 @@
     background-color:#222222
 
     .sidebard
+        margin:0 auto
+        padding-left: 3vw
+        width: 25vw
+        .ContenRange
+            display:flex
+            width: 100%
+            align-items:center
+            .InputRange
+                padding-top:10px
+                width: 75%
+            .RangeText
+                width: 20%
+                justify-content: center
+                text-align:center
+                
         .title
             h2
                 margin-bottom: 15px
@@ -18,7 +33,7 @@
                 padding: 5px 15px
                 background-color: #1815e2
                 border: 1px solid #1d13aa
-        width: 20vw
+                
         h2
             text-align: center
             color: white
@@ -79,13 +94,13 @@
 
     
     .imgGenerada
-        width: 75vw
-        height: 100vh
+        width: 70vw
+        height: 90vh
         
         .imgDiv
             display: flex
             align-items: center
-            width:100% 
+            width:90% 
             padding: 0%
             height: 100%
             img
@@ -94,10 +109,13 @@
                 height: 100%
                 box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px
 
+
+
 @media (max-width: 805px) 
     .Crear
         flex-direction: column-reverse
         padding-bottom: 50px
+
         .sidebard
             margin: 0 auto
             width: 80%
@@ -108,10 +126,14 @@
             input
                 font-size: 3.3vw
         .imgGenerada
-            width: 90%
+            width: 95vw
             margin: 0 auto
+            height:95vw
+                       
             .imgDiv
-                width:90% 
-                padding: 5%
+                width:90vw
+                padding: 1vw
+                height:auto
                 img
                     width: 100%
+                    height: auto 

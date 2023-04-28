@@ -22,7 +22,6 @@ export class CrearComponent {
   Num_inference_steps: number = 50;
 
   
-  
   responseSableDifusion: any = {
     status: 'success',
     generationTime: 1.0769741535186768,
@@ -71,28 +70,7 @@ export class CrearComponent {
   changeSwicht() {
     this.swicht = !this.swicht;
   }
-  /*
-  const download = e => {
-    console.log(e.target.href);
-    fetch(e.target.href, {
-      method: "GET",
-      headers: {}
-    })
-      .then(response => {
-        response.arrayBuffer().then(function(buffer) {
-          const url = window.URL.createObjectURL(new Blob([buffer]));
-          const link = document.createElement("a");
-          link.href = url;
-          link.setAttribute("download", "image.png"); //or any other extension
-          document.body.appendChild(link);
-          link.click();
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-  */
+
   ImagenStablediffusion() {
     let dataSD = {
       key: this.Token,
