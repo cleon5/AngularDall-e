@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { RestService } from '../../shared/services/rest.service';
 import { FirestoreService } from '../../shared/services/firestore.service';
 import { StabledifusionService } from 'src/app/shared/services/stabledifusion.service';
- 
 
 @Component({
   selector: 'app-crear',
-  templateUrl: './crear.component.html', 
+  templateUrl: './crear.component.html',
   styleUrls: ['./crear.component.sass'],
 })
 export class CrearComponent {
@@ -21,7 +20,6 @@ export class CrearComponent {
   scheduler: string = 'K_EULER';
   Num_inference_steps: number = 50;
 
-  
   responseSableDifusion: any = {
     status: 'success',
     generationTime: 1.0769741535186768,
@@ -49,7 +47,6 @@ export class CrearComponent {
       vae: 'stabilityai/sd-vae-ft-mse',
     },
   };
-  
 
   medidas: string = '1024x1024';
   RapidAPI: string = '';
@@ -66,6 +63,7 @@ export class CrearComponent {
     private StableDifussion: StabledifusionService
   ) {
     this.getdata();
+    //this.firestoreService.AgregarImagen("res");
   }
   changeSwicht() {
     this.swicht = !this.swicht;
@@ -112,9 +110,7 @@ export class CrearComponent {
       webhook_completed: resp.webhook_completed,
     };
   }
-  Comprobar(){
-    
-  }
+  Comprobar() {}
   GenerarStableDifussion() {
     let prompt = {
       version:
@@ -137,20 +133,22 @@ export class CrearComponent {
     ).subscribe((resp) => {
       this.setResp(resp);
       setTimeout(() => {
-        console.log('1 Segundo esperado');
-        if (this.responseSD.created_at !== null) {
-          this.StableDifussion.getUrl(resp, this.Token).subscribe((res) => {
-            this.responseSableDifusion = res;
-          });
-        } else {
-          console.log(this.responseSD);
-        }
-      }, 1000);
+        this.StableDifussion.getUrl(resp, this.Token).subscribe((res) => {
+          this.firestoreService.TokenAdd(this.Token);
+          this.responseSableDifusion = res;
+          this.firestoreService.AgregarImagen(res);
+        });
+      }, 10000);
     });
+  }
+
+  saveImagen(Imagen: any) {
+    this.firestoreService.AgregarImagen(Imagen);
   }
   async getdata() {
     this.user = await this.firestoreService.getUser();
     this.RapidAPI = this.user.apyKey;
+    this.Token = this.user.Token;
   }
 
   Generar() {
@@ -161,7 +159,7 @@ export class CrearComponent {
       this.RapidAPI,
       this.apiHost
     ).subscribe((resp) => {
-      this.firestoreService.actualizar(this.RapidAPI);
+      this.firestoreService.ApiKeyAdd(this.RapidAPI);
       this.response = resp;
     });
   }

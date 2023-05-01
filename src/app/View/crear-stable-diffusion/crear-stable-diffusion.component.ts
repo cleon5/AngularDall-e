@@ -2,7 +2,7 @@ import { Component, OnInit  } from '@angular/core';
 import { RestService } from '../../shared/services/rest.service';
 import { StabledifusionService } from 'src/app/shared/services/stabledifusion.service';
 import { FirestoreService } from '../../shared/services/firestore.service';
-import { ApiRestService } from 'src/app/shared/services/api-rest.service';
+//import { ApiRestService } from 'src/app/shared/services/api-rest.service';
 //import {ReplicateService } from "src/app/shared/services/replicate.service"
 //import {asa} from "../../../environments/index"
 //import { PruebaService } from 'src/app/shared/services/prueba.service';
@@ -53,7 +53,7 @@ export class CrearStableDiffusionComponent {
   user: any;
   constructor(
     private RestService: StabledifusionService,
-    private apoi:ApiRestService,
+    //rprivate apoi:ApiRestService,
     private firestoreService: FirestoreService,
   ) {    
   }

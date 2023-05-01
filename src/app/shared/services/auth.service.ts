@@ -17,9 +17,7 @@ import {
   addDoc,
   updateDoc,
 } from '@angular/fire/firestore';
-import { doc, setDoc } from 'firebase/firestore';
 import { FirestoreService } from '../../shared/services/firestore.service';
-//import { AngularFirestore } from '@angular/fire/compat/firestore'
 import { User } from './user';
 @Injectable({
   providedIn: 'root',
@@ -29,7 +27,6 @@ export class AuthService {
   firestore: Firestore = inject(Firestore);
   constructor(
     private auth: Auth,
-    firestore: Firestore,
     private firestoreService: FirestoreService
   ) {
     authState(this.auth).subscribe((user) => {
@@ -67,15 +64,15 @@ export class AuthService {
       return console.log(err);
     }
   }
-  async GoogleLogin2() {
-    try {
-      const res = await signInWithRedirect(this.auth, new GoogleAuthProvider());
-      this.firestoreService.setUserData(res);
-      console.log(res);
-    } catch (err) {
-      return console.log(err);
-    }
-  }
+  // async GoogleLogin2() {
+  //   try {
+  //     const res = await signInWithRedirect(this.auth, new GoogleAuthProvider());
+  //     this.firestoreService.setUserData(res);
+  //     console.log(res);
+  //   } catch (err) {
+  //     return console.log(err);
+  //   }
+  // }
   SignOut() {
     return signOut(this.auth).then((res) => {
       //localStorage.setItem('user', 'null');

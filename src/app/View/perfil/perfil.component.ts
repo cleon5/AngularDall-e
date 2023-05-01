@@ -49,16 +49,6 @@ export class PerfilComponent {
         console.log(err);
       });
   }
-  Google2(){
-    this.authService
-      .GoogleLogin2()
-      .then((Response) => {
-        this.router.navigate(['/']);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
   open() {
     this.correo = '';

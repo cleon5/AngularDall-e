@@ -23,6 +23,7 @@ import { TutorialComponent } from './View/tutorial/tutorial.component';
 import { CrearStableDiffusionComponent } from './View/crear-stable-diffusion/crear-stable-diffusion.component';
 
 import { ReplicateService } from './shared/services/replicate.service';
+import { FooterComponent } from './Components/footer/footer.component';
 
 
 
@@ -35,7 +36,8 @@ import { ReplicateService } from './shared/services/replicate.service';
     CrearComponent,
     CardPrompsComponent,
     TutorialComponent,
-    CrearStableDiffusionComponent
+    CrearStableDiffusionComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

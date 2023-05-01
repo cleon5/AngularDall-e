@@ -1,14 +1,8 @@
 <div class="ViewHome">
     <app-nav-bar></app-nav-bar>
     <div class="cardsHome">
-        <app-card-promps></app-card-promps>
-        <app-card-promps></app-card-promps>
-        <app-card-promps></app-card-promps>
-        <app-card-promps></app-card-promps>
+
+        <app-card-promps *ngFor="let imagen of Imagenes" [imagen]="imagen"></app-card-promps>
         
-        <app-card-promps></app-card-promps>
-        <app-card-promps></app-card-promps>
-        <app-card-promps></app-card-promps>
-        <app-card-promps></app-card-promps>
     </div>
 </div>
