@@ -16,7 +16,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 
 import { AuthService } from './shared/services/auth.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { CrearComponent } from './View/crear/crear.component';
 import { CardPrompsComponent } from './Components/card-promps/card-promps.component';
 import { TutorialComponent } from './View/tutorial/tutorial.component';
@@ -24,7 +24,6 @@ import { CrearStableDiffusionComponent } from './View/crear-stable-diffusion/cre
 
 import { ReplicateService } from './shared/services/replicate.service';
 import { FooterComponent } from './Components/footer/footer.component';
-
 
 
 @NgModule({
@@ -37,13 +36,15 @@ import { FooterComponent } from './Components/footer/footer.component';
     CardPrompsComponent,
     TutorialComponent,
     CrearStableDiffusionComponent,
-    FooterComponent
+    FooterComponent,
+     
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),

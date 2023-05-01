@@ -32,9 +32,10 @@ export class StabledifusionService {
     });
     let output = url.urls.get;
     console.log(output.substring(29));
+
     return this.http.get(output.substring(29), { headers: headers });
   }
-  public descargarImagen(){
-    
+  public descargarImagen(url:string){
+    return this.http.get(url, {observe:"response", responseType:"blob"})
   }
 }

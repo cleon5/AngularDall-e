@@ -14,6 +14,8 @@ import {
   where,
 } from '@angular/fire/firestore';
 import { DocumentData, doc, setDoc } from 'firebase/firestore';
+import { getStorage, ref,  } from "firebase/storage";
+import { Storage, uploadBytes, listAll, getDownloadURL,  } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +25,7 @@ export class FirestoreService {
   imagenData: any;
   Imagenes: any;
   firestore: Firestore = inject(Firestore);
-  constructor(private auth: Auth, firestore: Firestore) {
+  constructor(private auth: Auth, firestore: Firestore, private storage: Storage) {
     this.userData = JSON.parse(localStorage.getItem('user')!);
   }
   setImgData(img: any) {
@@ -108,10 +110,61 @@ export class FirestoreService {
     const querySnapshot = await getDocs(q);
     let temDocArr: DocumentData[] = [];
     querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
       temDocArr.push(doc.data())
     });
     return temDocArr;
+  }
+  private basePath = '/uploads';
+
+  saveImgStorage(fileUpload:any){
+    console.log(fileUpload)
+    const imgRef = ref(this.storage,`img/${fileUpload.name}`);
+    uploadBytes(imgRef, fileUpload)
+    .then(response => {
+      console.log(response)
+     //this.getImages();
+    })
+    .catch(error => console.log(error));
+  }
+  images:any = [];
+  getImages() {
+    
+    const imagesRef = ref(this.storage, 'img');
+    this.images=[]
+    listAll(imagesRef)
+      .then(async response => {
+        console.log(response);
+        for (let item of response.items) {
+          const url = await getDownloadURL(item);
+          this.images.push(url);
+        }
+        console.log(this.images)
+      })
+      .catch(error => console.log(error));
+      console.log(this.images)
+      return this.images;
+  }
+  downloadIMG(){
+    getDownloadURL(ref(this.storage, 'img/3727094c-a37f-48b5-8f8a-8bb75db3b637-0.png'))
+    .then((url) => {
+      // `url` is the download URL for 'images/stars.jpg'
+  
+      // This can be downloaded directly:
+      const xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = (event) => {
+        const blob = xhr.response;
+      };
+      xhr.open('GET', url);
+      xhr.send();
+  
+      // Or inserted into an <img> element
+      //const img = document.getElementById('myimg');
+      //img.setAttribute('src', url);
+    })
+    .catch((error) => {
+      // Handle any errors
+    });
   }
 }

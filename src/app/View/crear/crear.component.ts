@@ -133,10 +133,11 @@ export class CrearComponent {
     ).subscribe((resp) => {
       this.setResp(resp);
       setTimeout(() => {
-        this.StableDifussion.getUrl(resp, this.Token).subscribe((res) => {
+        this.StableDifussion.getUrl(resp, this.Token).subscribe((res:any) => {
           this.firestoreService.TokenAdd(this.Token);
           this.responseSableDifusion = res;
           this.firestoreService.AgregarImagen(res);
+          
         });
       }, 10000);
     });
@@ -163,4 +164,14 @@ export class CrearComponent {
       this.response = resp;
     });
   }
+  path:String | undefined
+  uploadImg($event:any){
+    const file = $event.target.files[0]
+    this.firestoreService.saveImgStorage(file);
+    $event.target = null
+  }
+  descarga(){
+    this.firestoreService.getImages()
+  }
+  
 }

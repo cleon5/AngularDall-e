@@ -15,10 +15,14 @@ export class HomeComponent {
     private firestoreService: FirestoreService,
     private StableDifussion: StabledifusionService
   ) {
-    this.getAll()
-    //this.firestoreService.AgregarImagen("res");
+    this.getimgs()
   }
 
+  async getimgs(){
+    this.Imagenes=[]
+    this.Imagenes =  await this.firestoreService.getImages()
+    console.log(this.Imagenes)
+  }
   async getAll(){
     let getImgs = await this.firestoreService.GetAllImages()
     this.Imagenes=getImgs;

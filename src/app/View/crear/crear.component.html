@@ -85,10 +85,17 @@
         </div>
         <div class="imgGenerada">
             <div class="imgDiv">
-                <img [src]="responseSableDifusion.output[0]" alt="" class="imgGenerada">
+                
+                <img [src]="responseSableDifusion.output[0]" alt="" id="ImgGenerada" class="imgGenerada">
                 
             </div>
-
+            <a [href]="responseSableDifusion.output[0]"  target="_blank" download="true">descargar</a>
         </div>
+    </div>
+
+    <div>
+        <label>image</label>
+        <input type="file" (change)="uploadImg($event)" accept="*.png" />
+       <button (click)="descarga()">descar</button>
     </div>
 </div>
