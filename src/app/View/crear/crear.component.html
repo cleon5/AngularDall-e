@@ -1,5 +1,6 @@
 <div class="viewCrear">
     <app-nav-bar></app-nav-bar>
+    <button (click)="ShowModal()">modalShow</button>
     <div  *ngIf="!swicht" class="Crear">
         
         <div class="sidebard">
@@ -93,9 +94,15 @@
         </div>
     </div>
 
-    <div>
+       
+    <div class="modalUpload" *ngIf="modalShow">
+        <div class="tituloModal">
+            <h3>adas</h3>
+            <button (click)="ShowModal()">X</button>
+        </div>
         <label>image</label>
         <input type="file" (change)="uploadImg($event)" accept="*.png" />
        <button (click)="descarga()">descar</button>
     </div>
+
 </div>

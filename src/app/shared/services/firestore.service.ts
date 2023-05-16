@@ -85,8 +85,6 @@ export class FirestoreService {
     });
   }
 
-
-
   async getUser() {
     let docSnap = await getDoc(doc(this.firestore, 'Users', this.userData.uid));
     this.setUserData(docSnap.data());
@@ -105,6 +103,7 @@ export class FirestoreService {
     console.log(this.Imagenes);
     this.AgregarImagenUser(this.Imagenes);
   }
+
   async GetAllImages(){
     const q = query(collection(this.firestore, "Imagenes"))
     const querySnapshot = await getDocs(q);
@@ -117,9 +116,11 @@ export class FirestoreService {
   }
   private basePath = '/uploads';
 
-  saveImgStorage(fileUpload:any){
+  saveImgStorage(fileUpload:any, imagen:any){
     console.log(fileUpload)
-    const imgRef = ref(this.storage,`img/${fileUpload.name}`);
+    const imgRef = ref(this.storage,`img/${imagen.id}`);
+    this.AgregarImagen(imagen)
+    
     uploadBytes(imgRef, fileUpload)
     .then(response => {
       console.log(response)
@@ -128,6 +129,7 @@ export class FirestoreService {
     .catch(error => console.log(error));
   }
   images:any = [];
+
   getImages() {
     
     const imagesRef = ref(this.storage, 'img');

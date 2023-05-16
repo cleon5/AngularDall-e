@@ -52,6 +52,7 @@ export class CrearComponent {
   RapidAPI: string = '';
   apiHost: string = 'openai80.p.rapidapi.com';
   responseSD: any;
+  modalShow:boolean =true;
   response: any = {
     created: 1681268637,
     data: [{ url: '../../assets/123.jpg' }],
@@ -68,7 +69,9 @@ export class CrearComponent {
   changeSwicht() {
     this.swicht = !this.swicht;
   }
-
+  ShowModal(){
+    this.modalShow = !this.modalShow;
+  }
   ImagenStablediffusion() {
     let dataSD = {
       key: this.Token,
@@ -133,19 +136,27 @@ export class CrearComponent {
     ).subscribe((resp) => {
       this.setResp(resp);
       setTimeout(() => {
-        this.StableDifussion.getUrl(resp, this.Token).subscribe((res:any) => {
-          this.firestoreService.TokenAdd(this.Token);
-          this.responseSableDifusion = res;
-          this.firestoreService.AgregarImagen(res);
-          
-        });
+        this.RecursiveAwait(resp)
       }, 10000);
     });
   }
 
-  saveImagen(Imagen: any) {
-    this.firestoreService.AgregarImagen(Imagen);
+  RecursiveAwait(resp : any){
+    this.StableDifussion.getUrl(resp, this.Token).subscribe((res:any) => {
+      if(res.completed_at != null){
+        console.log(res)
+        this.firestoreService.TokenAdd(this.Token);
+        this.responseSableDifusion = res;
+      }
+      else{
+        setTimeout(() => {
+          this.RecursiveAwait(resp)
+        }, 1000);
+      }
+      
+    });
   }
+  
   async getdata() {
     this.user = await this.firestoreService.getUser();
     this.RapidAPI = this.user.apyKey;
@@ -167,7 +178,7 @@ export class CrearComponent {
   path:String | undefined
   uploadImg($event:any){
     const file = $event.target.files[0]
-    this.firestoreService.saveImgStorage(file);
+    this.firestoreService.saveImgStorage(file, this.responseSableDifusion);
     $event.target = null
   }
   descarga(){
