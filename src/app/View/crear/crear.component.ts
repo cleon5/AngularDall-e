@@ -138,7 +138,7 @@ export class CrearComponent {
       setTimeout(() => {
         this.RecursiveAwait(resp)
       }, 10000);
-    });
+    })
   }
 
   RecursiveAwait(resp : any){
@@ -147,6 +147,7 @@ export class CrearComponent {
         console.log(res)
         this.firestoreService.TokenAdd(this.Token);
         this.responseSableDifusion = res;
+        this.ShowModal();
       }
       else{
         setTimeout(() => {
@@ -176,9 +177,14 @@ export class CrearComponent {
     });
   }
   path:String | undefined
+  file :any 
+  nombreImg :String = ""
+
+  publicarImg(){
+    this.firestoreService.saveImgStorage(this.file, this.responseSableDifusion);
+  }
   uploadImg($event:any){
-    const file = $event.target.files[0]
-    this.firestoreService.saveImgStorage(file, this.responseSableDifusion);
+    this.file = $event.target.files[0] 
     $event.target = null
   }
   descarga(){

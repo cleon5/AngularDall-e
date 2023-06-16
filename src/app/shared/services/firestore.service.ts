@@ -24,6 +24,7 @@ export class FirestoreService {
   userData: any;
   imagenData: any;
   Imagenes: any;
+  user : any;
   firestore: Firestore = inject(Firestore);
   constructor(private auth: Auth, firestore: Firestore, private storage: Storage) {
     this.userData = JSON.parse(localStorage.getItem('user')!);
@@ -90,7 +91,7 @@ export class FirestoreService {
     this.setUserData(docSnap.data());
     return docSnap.data();
   }
-  user : any;
+  
   async ControladorImagenes(ImagenId: string) {
     this.user = await this.getUser();
     this.Imagenes = this.user.Imagenes;

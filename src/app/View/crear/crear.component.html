@@ -85,24 +85,43 @@
 
         </div>
         <div class="imgGenerada">
-            <div class="imgDiv">
-                
-                <img [src]="responseSableDifusion.output[0]" alt="" id="ImgGenerada" class="imgGenerada">
-                
-            </div>
-            <a [href]="responseSableDifusion.output[0]"  target="_blank" download="true">descargar</a>
+            <a [href]="responseSableDifusion.output[0]"  target="_blank" download="true">
+                <div class="imgDiv"> 
+                <img [src]="responseSableDifusion.output[0]" alt="" id="ImgGenerada" class="imgGenerada"></div>
+            </a>
         </div>
     </div>
 
        
     <div class="modalUpload" *ngIf="modalShow">
         <div class="tituloModal">
-            <h3>adas</h3>
+            <h3>Subir imagen</h3>
             <button (click)="ShowModal()">X</button>
         </div>
-        <label>image</label>
-        <input type="file" (change)="uploadImg($event)" accept="*.png" />
-       <button (click)="descarga()">descar</button>
+     <div class="modalBody">
+        <div class="modalActions">
+            <label>image</label><br>
+            <input type="file" (change)="uploadImg($event)" accept="*.png" /><br>
+            
+            <label for="">Prompt</label>
+            <br>
+            <p>{{responseSableDifusion.input && responseSableDifusion.input.prompt}}</p>
+            <br>
+            <label for="">Negative Prompt</label>
+            <br>
+            <p >{{responseSableDifusion.input && responseSableDifusion.input.negative_prompt}}</p>
+            <br>
+            <button (click)="publicarImg()">Publicar imagen</button>
+        </div>
+        <div class="modalImg">
+            <a [href]="responseSableDifusion.output[0]"  target="_blank" download="true">
+               <img [src]="responseSableDifusion.output[0]" alt="" id="ImgGenerada" class="imgGenerada"> 
+            </a>
+            
+            
+        </div>
+     </div>
+        
     </div>
 
 </div>

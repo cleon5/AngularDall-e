@@ -112,7 +112,7 @@
 
 
 @media (max-width: 805px) 
-    .Crear
+    .Crear 
         flex-direction: column-reverse
         padding-bottom: 50px
 
@@ -139,22 +139,125 @@
                     height: auto 
 
 .modalUpload
-    width: 60vw
-    height: 20vw
+    width: 70vw
+    height: 80vh
     position: fixed
     z-index: 1
-    left: 20vw
-    top: 20vh
+    left: 15vw
+    top: 10vh
+    padding: 10px
     display:flex
     justify-content: center
-    background-color: white
+    background-color: #0e0e0e
+    color: white
     border-radius: 10px
+
     .tituloModal
         display: flex
         justify-content: space-between
         margin: 0 30px
         align-items: center
+        h3
+            font-size: 2.2rem
+            margin-top: 5px
+            margin-bottom: 5px
         button
             display: flex
             height: 50%
             margin: 0
+    .modalBody
+        display: flex
+        width: 100%
+        .modalActions
+            width: 30%
+            margin:0 auto
+
+            .ContenRange
+                display:flex
+                width: 100%
+                align-items:center
+                .InputRange
+                    padding-top:10px
+                    width: 75%
+                .RangeText
+                    width: 20%
+                    justify-content: center
+                    text-align:center
+                    
+            .title
+                h2
+                    margin-bottom: 15px
+                .btnChange
+                    margin-bottom: 20px
+                    padding: 5px 15px
+                    background-color: #1815e2
+                    border: 1px solid #1d13aa
+                    
+            h2
+                text-align: center
+                color: white
+                font-size: 2.5vw
+            label
+                color: white
+                font-size: 2vw
+                font-family: inherit
+            input
+                width: 90%
+                margin-bottom: 20px
+                font-family: inherit
+                width: 100%
+                border: 0
+                border-bottom: 2px solid gray
+                outline: 0
+                font-size: 1.3rem
+                color: white
+                padding: 7px 0
+                background: transparent
+                transition: border-color 0.2s
+            textarea
+                width: 90%
+                margin-bottom: 10px
+                font-family: inherit
+                width: 100%
+                border: 0
+                border-bottom: 2px solid gray
+                outline: 0
+                font-size: 1.3rem
+                color: white
+                padding: 7px 0
+                background: transparent
+                transition: border-color 0.2s
+            button
+                width: 90%
+                margin: 0 5%
+                background-color: #13aa52
+                border: 1px solid #13aa52
+                border-radius: 4px
+                box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0
+                box-sizing: border-box
+                color: #fff
+                cursor: pointer
+                font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif
+                font-size: 16px
+                font-weight: 400
+                outline: none
+                outline: 0
+                padding: 10px 25px
+                text-align: center
+                transform: translateY(0)
+                transition: transform 150ms, box-shadow 150ms
+                touch-action: manipulation
+            button:hover
+                box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0
+                transform: translateY(-2px)
+        .modalImg
+            width: 65%
+            height: auto
+            justify-content: center
+            img
+                margin: 2.5px
+                max-width: 100%
+                width: auto
+                height: 95% 
+                background-size: cover
+                background-repeat: no-repeat
