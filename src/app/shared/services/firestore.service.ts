@@ -73,8 +73,10 @@ export class FirestoreService {
       Token: Token,
     });
   }
+
   AgregarImagen(imagen: any) {
     console.log(imagen);
+
     //this.setImgData(imagen);
     this.ControladorImagenes(imagen.id);
     setDoc(doc(this.firestore, 'Imagenes', imagen.id), imagen)
@@ -110,7 +112,7 @@ export class FirestoreService {
     const querySnapshot = await getDocs(q);
     let temDocArr: DocumentData[] = [];
     querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
+      console.log(doc.data());
       temDocArr.push(doc.data())
     });
     return temDocArr;
@@ -123,7 +125,7 @@ export class FirestoreService {
     this.AgregarImagen(imagen)
     
     uploadBytes(imgRef, fileUpload)
-    .then(response => {
+    .then(response => {//fullPath
       console.log(response)
      //this.getImages();
     })
@@ -131,13 +133,22 @@ export class FirestoreService {
   }
   images:any = [];
 
+  async getImage(id:String){
+    console.log(id)
+    const pathReference = ref(this.storage, `img/${id}`);
+    const url = await getDownloadURL(pathReference).then((data) => {
+      console.log(data)
+      return data;
+    })
+    return url
+  }
   getImages() {
-    
+    const pathReference = ref(this.storage, 'img/4baxhmzbg5kuxvg3dcslqz63pa');
+
     const imagesRef = ref(this.storage, 'img');
     this.images=[]
     listAll(imagesRef)
       .then(async response => {
-        console.log(response);
         for (let item of response.items) {
           const url = await getDownloadURL(item);
           this.images.push(url);
@@ -145,7 +156,6 @@ export class FirestoreService {
         console.log(this.images)
       })
       .catch(error => console.log(error));
-      console.log(this.images)
       return this.images;
   }
   downloadIMG(){

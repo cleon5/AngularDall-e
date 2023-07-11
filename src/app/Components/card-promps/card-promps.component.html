@@ -1,12 +1,12 @@
-<div class="cardPromt">
+<div class="cardPromt"  *ngIf="displayNone">
     
     <div class="bodyPromt">
         <h3>Promt #1</h3>
         <p>
-          {{ imagen}}
+          {{ imagen.input.prompt}}
         </p>
     </div>
     <div class="imgPromt">
-        <img src="{{imagen}}" alt="">
+        <img src="{{img}}" alt="">
     </div>
 </div>

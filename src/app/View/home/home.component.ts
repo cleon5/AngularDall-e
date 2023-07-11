@@ -10,23 +10,27 @@ import { StabledifusionService } from 'src/app/shared/services/stabledifusion.se
 })
 export class HomeComponent {
   Imagenes:any;
+  InfoImage:any;
   constructor(
-    private RestService: RestService,
     private firestoreService: FirestoreService,
-    private StableDifussion: StabledifusionService
   ) {
     this.getimgs()
+    this.getAll()
+    //this.getImg()
   }
-
+  async getImg(dat:any){
+    this.InfoImage.map(async(i:any) => {
+      let x = await this.firestoreService.getImage(i.id)
+    })
+  }
   async getimgs(){
     this.Imagenes=[]
     this.Imagenes =  await this.firestoreService.getImages()
-    console.log(this.Imagenes)
   }
   async getAll(){
     let getImgs = await this.firestoreService.GetAllImages()
-    this.Imagenes=getImgs;
-    console.log(getImgs)
+    this.InfoImage=getImgs;
+    this.getImg(getImgs)
   }
 
 

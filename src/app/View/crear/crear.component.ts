@@ -52,7 +52,7 @@ export class CrearComponent {
   RapidAPI: string = '';
   apiHost: string = 'openai80.p.rapidapi.com';
   responseSD: any;
-  modalShow:boolean =true;
+  modalShow:boolean =false;
   response: any = {
     created: 1681268637,
     data: [{ url: '../../assets/123.jpg' }],
