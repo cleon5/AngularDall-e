@@ -32,6 +32,4 @@ export class HomeComponent {
     this.InfoImage=getImgs;
     this.getImg(getImgs)
   }
-
-
 }

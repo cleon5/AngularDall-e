@@ -16,6 +16,6 @@ export class RestService {
     });
     
     //const prop = data:datos;
-    return this.http.post(url,  datos, {headers:headers});
+    return this.http.post(url,  {data:datos}, {headers:headers});
   }
 }

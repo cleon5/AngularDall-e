@@ -47,7 +47,6 @@ export class FirestoreService {
     };
   }
   setUserData(user: any) {
-    console.log(user);
     this.userData = {
       uid: user.uid,
       email: user.email,
@@ -60,9 +59,7 @@ export class FirestoreService {
       merge: true,
     });
   }
-  saveUserOnly() {}
   ApiKeyAdd(apikey: string) {
-    console.log(this.userData);
     updateDoc(doc(this.firestore, 'Users', this.userData.uid), {
       apyKey: apikey,
     });
@@ -75,14 +72,10 @@ export class FirestoreService {
   }
 
   AgregarImagen(imagen: any) {
-    console.log(imagen);
-
-    //this.setImgData(imagen);
     this.ControladorImagenes(imagen.id);
     setDoc(doc(this.firestore, 'Imagenes', imagen.id), imagen)
   }
   AgregarImagenUser(arrImagenes: any) {
-    console.log(this.userData);
     updateDoc(doc(this.firestore, 'Users', this.userData.uid), {
       Imagenes: arrImagenes,
     });
@@ -103,7 +96,6 @@ export class FirestoreService {
       this.Imagenes.push(ImagenId);
     }
 
-    console.log(this.Imagenes);
     this.AgregarImagenUser(this.Imagenes);
   }
 
@@ -112,12 +104,10 @@ export class FirestoreService {
     const querySnapshot = await getDocs(q);
     let temDocArr: DocumentData[] = [];
     querySnapshot.forEach((doc) => {
-      console.log(doc.data());
       temDocArr.push(doc.data())
     });
     return temDocArr;
   }
-  private basePath = '/uploads';
 
   saveImgStorage(fileUpload:any, imagen:any){
     console.log(fileUpload)
@@ -134,16 +124,14 @@ export class FirestoreService {
   images:any = [];
 
   async getImage(id:String){
-    console.log(id)
     const pathReference = ref(this.storage, `img/${id}`);
     const url = await getDownloadURL(pathReference).then((data) => {
-      console.log(data)
       return data;
     })
     return url
   }
   getImages() {
-    const pathReference = ref(this.storage, 'img/4baxhmzbg5kuxvg3dcslqz63pa');
+    //const pathReference = ref(this.storage, 'img/4baxhmzbg5kuxvg3dcslqz63pa');
 
     const imagesRef = ref(this.storage, 'img');
     this.images=[]
@@ -153,7 +141,6 @@ export class FirestoreService {
           const url = await getDownloadURL(item);
           this.images.push(url);
         }
-        console.log(this.images)
       })
       .catch(error => console.log(error));
       return this.images;
@@ -171,10 +158,6 @@ export class FirestoreService {
       };
       xhr.open('GET', url);
       xhr.send();
-  
-      // Or inserted into an <img> element
-      //const img = document.getElementById('myimg');
-      //img.setAttribute('src', url);
     })
     .catch((error) => {
       // Handle any errors
