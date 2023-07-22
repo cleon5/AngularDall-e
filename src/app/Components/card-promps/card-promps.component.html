@@ -1,10 +1,10 @@
 <div class="cardPromt"  *ngIf="displayNone">
     
     <div class="bodyPromt">
-        <h3>Promt #1</h3>
         <p>
-          {{ imagen.input.prompt}}
-          {{ imagen.id}}
+         Input: {{ imagen.input.prompt}}<br/>
+         Negative prompt: {{imagen.input.negative_prompt == "" ? "null":+imagen.input.negative_prompt}}<br/>
+         Num inference steps: {{imagen.input.num_inference_steps == "" ? "null":+imagen.input.num_inference_steps}}<br/>
         </p>
     </div>
     <div class="imgPromt">

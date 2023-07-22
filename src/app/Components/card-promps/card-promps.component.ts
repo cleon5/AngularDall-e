@@ -22,7 +22,7 @@ export class CardPrompsComponent {
   }
   async setimg(){
     this.img = await this.firestoreService.getImage(this.imagen.id)
-    console.log(this.img)
+    console.log(this.imagen)
     this.img ? this.displayNone = true:this.displayNone = false;
 
   }

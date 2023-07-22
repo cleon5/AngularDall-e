@@ -1,28 +1,31 @@
 .cardPromt
     position: relative
     height: auto
-    width: 24vw
+    width: 23vw
+    margin: .5vw
     h3
         font-size: 1.8vw
         text-align: center
     .bodyPromt
         width: 22vw
         position: absolute
-        top:15vw
-        margin: 1vw
+        top:17vw
+        margin: .5vw
         z-index: 10
         border-radius: 10px
-        background-color: #cacaca65
-        color: #141414e8
+        background-color: #e9cece00
+        color: #14141400
         :hover
-            background-color: #492d2d
-
+            background-color: #bdb9b9bb
+            color: #0f0f0fe8
         p
             overflow: hidden
+            border-radius: 10px
             font-size: 1.5vw
-            height: 100px
-            padding: 10px
-            background-color: #d1d1d1
+            height:8vw
+            padding: 30px 10px 10px
+            align-content: center
+            background-color: #d1d1d100
             text-overflow: ellipsis
     .imgPromt
         width: 100%
@@ -38,7 +41,7 @@
 
 @media screen and (max-width: 880px) 
     .cardPromt
-        width: 48vw
+        width: 46vw
         h3
             font-size: 2.5vw
             text-align: center
@@ -49,10 +52,10 @@
             margin: 3vw
             z-index: 10
             border-radius: 10px
-            background-color: #838282
             p
                 font-size: 2vw
-                background-color: #d1d1d1
+                height:8vw
+                padding: 10px 10px 10px
         .imgPromt
             width: 100%
             position: relative
