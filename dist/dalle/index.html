@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <title>Dalle</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3245344578520632" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="styles.ef46db3751d8e999.css"></head>
+
+<body style="margin:0">
+  <script src="https://kit.fontawesome.com/3d6674abab.js" crossorigin="anonymous"></script>
+  <app-root></app-root>
+
+  <script>
+    var btn = document.getElementById()
+    
+    async function downloadImage() {
+      var img = document.getElementById("ImgGenerada")
+      console.log(img.src)
+      let imageSrc = img.src
+      const image = await fetch("generations/3727094c-a37f-48b5-8f8a-8bb75db3b637-0.png")
+      const imageBlog = await image.blob()
+      const imageURL = URL.createObjectURL(imageBlog)
+      console.log("a")
+      const link = document.createElement('a')
+      link.href = imageURL
+      link.download = "a.png"
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    }
+  </script>
+
+  <!-- Google tag (gtag.js) 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P12DDDKRER"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P12DDDKRER');
+</script>-->
+<script src="runtime.5091c743cfe01406.js" type="module"></script><script src="polyfills.d9da129a51a98b5f.js" type="module"></script><script src="main.be1c7e3e69db7840.js" type="module"></script>
+
+</body></html>
